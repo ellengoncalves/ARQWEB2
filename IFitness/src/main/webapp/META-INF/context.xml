@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- elemento raiz do xml é o context -->
+<Context crossContext="true">
+	<!-- ANOTAÇÕES
+		  - 'Resource' - recurso
+	      - 'auth="Container' - container = tomcat, que é quem vai passar as credenciais necessárias
+	      - 'driverClassName="com.mysql.cj.jdbc.Driver' - api do java utilizada pro código sql 
+	      - máxima de 10k conexões ociosas
+	      - mysql - é um servidor de dados que roda em uma maquina e em uma porta (localhost 3307)-->
+	      
+	<Resource name="jdbc/IFitnessDB" auth="Container" 
+    	type="javax.sql.DataSource"
+    	maxTotal = "100" minIdle="10" maxIdle="30" maxWaitMillis="10000"
+    	username="root" password="root"
+    	driverClassName="com.mysql.cj.jdbc.Driver"
+    	url="jdbc:mysql://localhost:3307/ifitness" />
+</Context>

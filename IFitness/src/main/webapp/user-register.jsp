@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -31,6 +31,7 @@
 				</div>
 			</c:if>
 			
+			<!-- sempre que for fomulário o método deve ser POST -->
 			<form action="userRegister" method="post" id="form1">
 				<h1 class="text-center">Cadastre-se</h1>
 
@@ -76,7 +77,8 @@
 						<option value="PREFIRO_NAO_DIZER">Prefiro não dizer</option>
 					</select> <span id="5"></span>
 				</div>
-
+				
+				
 				<div class="mb-2">
 					<button type="submit" class="btn btn-primary">Salvar</button>
 				</div>
