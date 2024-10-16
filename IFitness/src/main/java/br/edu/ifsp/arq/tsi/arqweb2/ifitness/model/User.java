@@ -1,7 +1,6 @@
 package br.edu.ifsp.arq.tsi.arqweb2.ifitness.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class User implements Serializable {
@@ -12,8 +11,8 @@ public class User implements Serializable {
 	private String name;
 	private String email;
 	private String password;
-	private LocalDate dateOfBirth;
-	private Gender gender;
+	private String telefone;
+	private String cpf;
 
 	public Long getId() {
 		return id;
@@ -47,20 +46,20 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
-	public Gender getGender() {
-		return gender;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setGender(Gender gender) {
-		this.gender = gender;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	@Override

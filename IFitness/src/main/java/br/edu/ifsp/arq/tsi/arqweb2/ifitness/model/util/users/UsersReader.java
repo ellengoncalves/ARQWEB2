@@ -24,7 +24,7 @@ public class UsersReader {
 				.create();
 		List<User> users = null;
 		// sempre que for lidar com arquivos o java exige a utilização do tratamento de exceção (try catch)
-		String path = "/home/aluno/Documentos/Ellen/Workspace/ARQWEB2 - git/IFitness/users.json";
+		String path = "/home/aluno/Documentos/ellen/Workspace/ARQWEB2/IFitness/users.json";
 		try {
 			File file = new File(path);
 			if(file.exists()) {

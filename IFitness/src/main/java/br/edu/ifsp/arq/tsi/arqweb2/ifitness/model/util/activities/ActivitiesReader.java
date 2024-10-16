@@ -27,7 +27,7 @@ public class ActivitiesReader {
 						new LocalDateTypeAdapter())
 				.create();
 		List<Activity> activities = null;
-		String path = "/home/aluno/Documentos/Ellen/Workspace/ARQWEB2 - git/IFitness/activities.json";
+		String path = "/home/aluno/Documentos/ellen/Workspace/ARQWEB2/IFitness/activities.json";
 		
 		try {
 			File file = new File(path);

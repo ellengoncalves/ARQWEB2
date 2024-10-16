@@ -21,7 +21,7 @@ public class UsersWriter {
 						new LocalDateTypeAdapter())
 				.create();
 		List<User> users = UsersReader.read();
-		String path = "/home/aluno/Documentos/Ellen/Workspace/ARQWEB2 - git/IFitness/users.json";
+		String path = "/home/aluno/Documentos/ellen/Workspace/ARQWEB2/IFitness/users.json";
 		
 		if(users == null) {
 			// quando não tem nenhum objeto cadastrado, primeiro id = 1

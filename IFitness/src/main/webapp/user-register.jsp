@@ -17,7 +17,7 @@
 	crossorigin="anonymous">
 <link href="css/styles.css" rel="stylesheet">
 <link href="css/errors.css" rel="stylesheet">
-<title>IFitness - Página de Cadastro de Usuário</title>
+<title>TechCare - Página de Cadastro da Melhor Assitência Técnica</title>
 </head>
 <body>
 	<div class="container">
@@ -61,21 +61,17 @@
 				</div>
 
 				<div class="mb-2">
-					<label for="dateOfBirth">Data de Nascimento*</label> <input
-						type="date" name="dateOfBirth" id="dateOfBirth"
-						class="form-control" max="2012-12-31" required="required">
+					<label for="telefone">Telefone*</label> 
+					<input type="tel" name="telefone" id="telefone"
+						class="form-control" required="required">
 					<span id="4"></span>
 				</div>
 
 				<div class="mb-2">
-					<label for="gender">Gênero*</label> <select class="form-select"
-						name="gender" id="gender" required="required">
-						<option value="" selected>Selecione</option>
-						<option value="MASCULINO">Masculino</option>
-						<option value="FEMININO">Feminino</option>
-						<option value="OUTRO">Outro</option>
-						<option value="PREFIRO_NAO_DIZER">Prefiro não dizer</option>
-					</select> <span id="5"></span>
+					<label for="cpf">CPF*</label> 
+					<input type="text" name="cpf" id="cpf" class="form-select" 
+						required="required">	
+					<span id="5"></span>
 				</div>
 				
 				

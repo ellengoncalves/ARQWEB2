@@ -13,5 +13,5 @@
     	maxTotal = "100" minIdle="10" maxIdle="30" maxWaitMillis="10000"
     	username="root" password="root"
     	driverClassName="com.mysql.cj.jdbc.Driver"
-    	url="jdbc:mysql://localhost:3307/ifitness" />
+    	url="jdbc:mysql://localhost:3307/techcare" />
 </Context>

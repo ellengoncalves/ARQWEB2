@@ -20,7 +20,7 @@ public class ActivitiesWriter {
 						new LocalDateTypeAdapter())
 				.create();
 		List<Activity> activities = ActivitiesReader.read();
-		String path = "/home/aluno/Documentos/Ellen/Workspace/ARQWEB2 - git/IFitness/activities.json";
+		String path = "/home/aluno/Documentos/ellen/Workspace/ARQWEB2/IFitness/activities.json";
 		
 		if(activities == null) {
 			// quando não tem nenhum objeto cadastrado

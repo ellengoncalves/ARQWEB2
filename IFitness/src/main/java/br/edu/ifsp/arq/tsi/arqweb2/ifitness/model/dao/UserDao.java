@@ -1,7 +1,6 @@
 package br.edu.ifsp.arq.tsi.arqweb2.ifitness.model.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -76,14 +75,14 @@ public class UserDao {
 			return false;
 		}
 		String sql = "insert into user (name, email, password, "
-				+ "birth_date, gender, active) values (?,?,?,?,?,?)";  // o id é auto incremental
+				+ "telefone, cpf, active) values (?,?,?,?,?,?)";  // o id é auto incremental
 		try(Connection conn = dataSource.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)){
 			ps.setString(1, user.getName());
 			ps.setString(2, user.getEmail());
 			ps.setString(3, user.getPassword());
-			ps.setDate(4, Date.valueOf(user.getDateOfBirth())); // tranformação do localdate (data de nasc original do usuário) em um date (esperado)
-			ps.setString(5, user.getGender().toString());
+			ps.setString(4, user.getTelefone()); // tranformação do localdate (data de nasc original do usuário) em um date (esperado)
+			ps.setString(5, user.getCpf().toString());
 			ps.setBoolean(6, true); // salvando o  usuário como ativo
 			ps.executeUpdate(); // execução da instrução
 		}catch (SQLException e) {

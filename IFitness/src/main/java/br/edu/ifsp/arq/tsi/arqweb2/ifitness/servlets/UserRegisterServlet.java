@@ -1,9 +1,7 @@
 package br.edu.ifsp.arq.tsi.arqweb2.ifitness.servlets;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
-import br.edu.ifsp.arq.tsi.arqweb2.ifitness.model.Gender;
 import br.edu.ifsp.arq.tsi.arqweb2.ifitness.model.User;
 import br.edu.ifsp.arq.tsi.arqweb2.ifitness.model.dao.UserDao;
 import br.edu.ifsp.arq.tsi.arqweb2.ifitness.utils.DataSourceSearcher;
@@ -30,16 +28,16 @@ public class UserRegisterServlet extends HttpServlet{
 		String name = req.getParameter("name");
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		String dateOfBirth = req.getParameter("dateOfBirth");
-		String gender = req.getParameter("gender");
+		String telefone = req.getParameter("telefone");
+		String cpf = req.getParameter("cpf");
 		
 		// instancia e configura um objeto User com os dados recuperados
 		User user = new User();
 		user.setName(name);
 		user.setEmail(email);
 		user.setPassword(PasswordEncoder.encode(password));
-		user.setDateOfBirth(LocalDate.parse(dateOfBirth));
-		user.setGender(Gender.valueOf(gender));
+		user.setTelefone(telefone);
+		user.setCpf(cpf);
 		
 		RequestDispatcher dispatcher = null;
 		
