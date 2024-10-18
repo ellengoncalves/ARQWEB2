@@ -5,7 +5,8 @@ import java.util.List;
 
 import br.edu.ifsp.arq.tsi.arqweb2.ifitness.model.Activity;
 import br.edu.ifsp.arq.tsi.arqweb2.ifitness.model.User;
-import br.edu.ifsp.arq.tsi.arqweb2.ifitness.model.util.activities.ActivitiesReader;
+import br.edu.ifsp.arq.tsi.arqweb2.ifitness.model.dao.ActivityDao;
+import br.edu.ifsp.arq.tsi.arqweb2.ifitness.utils.DataSourceSearcher;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -30,8 +31,10 @@ public class HomeServlet extends HttpServlet{
 		
 		User user = (User)session.getAttribute("user");
 		// listar atividades do usuário logado
+		ActivityDao activityDao = 
+				new ActivityDao(DataSourceSearcher.getInstance().getDataSource());
 		List<Activity> userActivities = 
-				ActivitiesReader.readByUser(user);
+				activityDao.getActivitiesByUser(user);
 		req.setAttribute("userActivities", userActivities);
 		url = "/home.jsp";
 		
@@ -45,8 +48,3 @@ public class HomeServlet extends HttpServlet{
 	}
 
 }
-
-
-
-
-
