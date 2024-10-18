@@ -8,7 +8,7 @@
 	      - máxima de 10k conexões ociosas
 	      - mysql - é um servidor de dados que roda em uma maquina e em uma porta (localhost 3307)-->
 	      
-	<Resource name="jdbc/IFitnessDB" auth="Container" 
+	<Resource name="jdbc/TechCareDB" auth="Container" 
     	type="javax.sql.DataSource"
     	maxTotal = "100" minIdle="10" maxIdle="30" maxWaitMillis="10000"
     	username="root" password="root"

@@ -15,7 +15,7 @@ public class DataSourceSearcher {
 		try {
 			Context context = new InitialContext();
 			context = (Context)context.lookup("java:comp/env"); // forma de procurar o arquivo
-			dataSource = (DataSource)context.lookup("jdbc/IFitnessDB"); // a fim de encontrar a fonte de dados = bd
+			dataSource = (DataSource)context.lookup("jdbc/TechCareDB"); // a fim de encontrar a fonte de dados = bd
 		}catch (NamingException e) {
 			throw new RuntimeException("Erro durante o lookup", e);
 		}
