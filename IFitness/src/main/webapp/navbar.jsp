@@ -13,6 +13,8 @@
 					href="activity-register.jsp">Atividade</a></li>
 				<li class="nav-item"><a class="nav-link" href="statistics.jsp">Estatísticas</a>
 				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="serviceOrder-register.jsp">Ordem de Serviço</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
