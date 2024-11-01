@@ -69,7 +69,56 @@
 
 				<div class="mb-2">
 					<label for="cpf">CPF*</label> 
-					<input type="text" name="cpf" id="cpf" class="form-select" 
+					<input type="text" name="cpf" id="cpf" class="form-control" 
+						required="required">	
+					<span id="5"></span>
+				</div>
+				
+				<div class="mb-2">
+					<label for="logradouro">Logradouro (Rua)*</label> 
+					<input type="text" name="logradouro" id="logradouro" class="form-control" 
+						required="required">	
+					<span id="5"></span>
+				</div>
+				
+				<div class="mb-2">
+					<label for="numero">Número*</label> 
+					<input type="text" name="numero" id="numero" class="form-control" 
+						required="required">	
+					<span id="5"></span>
+				</div>
+				
+				<div class="mb-2">
+					<label for="complemento">Complemento*</label> 
+					<input type="text" name="complemento" id="complemento" class="form-control" 
+						required="required">	
+					<span id="5"></span>
+				</div>
+				
+				<div class="mb-2">
+					<label for="bairro">Bairro*</label> 
+					<input type="text" name="bairro" id="bairro" class="form-control" 
+						required="required">	
+					<span id="5"></span>
+				</div>
+				
+				<div class="mb-2">
+					<label for="cep">CEP*</label> 
+					<input type="text" name="cep" id="cep" class="form-control" 
+						required="required">	
+					<span id="5"></span>
+				</div>
+				
+				<div class="mb-2">
+					<label for="cidade">Cidade*</label> 
+					<input type="text" name="cidade" id="cidade" class="form-control" 
+						required="required">	
+					<span id="5"></span>
+				</div>
+				
+				<div class="mb-2">
+					<label for="estado">Estado*</label> 
+					<input type="text" name="estado" id="estado" class="form-control" 
 						required="required">	
 					<span id="5"></span>
 				</div>

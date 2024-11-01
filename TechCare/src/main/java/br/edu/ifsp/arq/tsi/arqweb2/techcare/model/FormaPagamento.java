@@ -9,22 +9,21 @@ public class FormaPagamento implements Serializable{
 	
 	private Long codigo;
 	private String nome;
-	private OrdemServico ordemServico;
 	
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 	
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	
-	public OrdemServico getOrdemServico() {
-		return ordemServico;
-	}
-
-	public void setOrdemServico(OrdemServico ordemServico) {
-		this.ordemServico = ordemServico;
 	}
 
 	@Override

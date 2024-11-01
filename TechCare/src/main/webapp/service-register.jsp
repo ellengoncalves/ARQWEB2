@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="br.edu.ifsp.arq.tsi.arqweb2.techcare.model.dao.ClienteDao" %>
+<%@ page import="br.edu.ifsp.arq.tsi.arqweb2.techcare.model.Cliente" %>
+<%@ page import="br.edu.ifsp.arq.tsi.arqweb2.techcare.model.dao.FormaPagamentoDao" %>
+<%@ page import="br.edu.ifsp.arq.tsi.arqweb2.techcare.model.FormaPagamento" %>
+<%@ page import="br.edu.ifsp.arq.tsi.arqweb2.techcare.utils.DataSourceSearcher" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

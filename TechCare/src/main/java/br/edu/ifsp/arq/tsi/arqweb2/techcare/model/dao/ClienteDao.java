@@ -69,8 +69,7 @@ private DataSource dataSource;
 		if(optional.isPresent()) {
 			return false;
 		}
-		String sql = "insert into client (nome, email, password, "
-				+ "telefone, cpf, ativo) values (?,?,?,?,?,?)";
+		String sql = "insert into client (nome, email, password, " + "telefone, cpf, ativo, logradouro, numero, complemento, bairro, cidade, estado, cep) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try(Connection conn = dataSource.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)){
 			ps.setString(1, cliente.getNome());
@@ -79,6 +78,13 @@ private DataSource dataSource;
 			ps.setString(4, cliente.getTelefone());
 			ps.setString(5, cliente.getCpf().toString());
 			ps.setBoolean(6, true);
+			ps.setString(7, cliente.getEndereco().getLogradouro());
+			ps.setString(8, cliente.getEndereco().getNumero());
+			ps.setString(9, cliente.getEndereco().getComplemento());
+			ps.setString(10, cliente.getEndereco().getBairro());
+			ps.setString(12, cliente.getEndereco().getCidade());
+			ps.setString(13, cliente.getEndereco().getEstado());
+			ps.setString(11, cliente.getEndereco().getCep());
 			ps.executeUpdate();
 		}catch (SQLException e) {
 			throw new RuntimeException("Erro durante a escrita no BD", e);
