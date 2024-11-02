@@ -16,8 +16,7 @@ public class OrdemServico implements Serializable{
 	private BigDecimal valor;
 	private String observacao;
 	private Cliente cliente;
-	private FormaPagamento formaPagamento;
-	private Status status;
+	private OrdemServicoStatus status;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -74,20 +73,12 @@ public class OrdemServico implements Serializable{
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	public FormaPagamento getFormaPagamento() {
-		return formaPagamento;
-	}
 
-	public void setFormaPagamento(FormaPagamento formaPagamento) {
-		this.formaPagamento = formaPagamento;
-	}
-
-	public Status getStatus() {
+	public OrdemServicoStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(OrdemServicoStatus status) {
 		this.status = status;
 	}
 
