@@ -139,10 +139,3 @@
 	<script src="js/client-register.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

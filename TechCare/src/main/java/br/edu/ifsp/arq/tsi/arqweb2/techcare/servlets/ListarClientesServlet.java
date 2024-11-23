@@ -1,7 +1,7 @@
 package br.edu.ifsp.arq.tsi.arqweb2.techcare.servlets;
 
 import java.io.IOException;
-import java.util.Optional;
+import java.util.List;
 
 import br.edu.ifsp.arq.tsi.arqweb2.techcare.model.Cliente;
 import br.edu.ifsp.arq.tsi.arqweb2.techcare.model.dao.ClienteDao;
@@ -12,39 +12,33 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet{
+@WebServlet("/listarClientes")
+public class ListarClientesServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
-	public LoginServlet() {
-		super();
-	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String email = req.getParameter("email");
-		String password = req.getParameter("password");
-		
-		String url;
-		
 		ClienteDao clienteDao = new ClienteDao(DataSourceSearcher.getInstance().getDataSource());
-		
-		Optional <Cliente> optional = clienteDao.getClienteByEmailAndPassword(email, password);
-		if(optional.isPresent()) {
-			Cliente cliente = optional.get();
-			HttpSession session = req.getSession();
-			session.setMaxInactiveInterval(600);
-			session.setAttribute("cliente", cliente);
-			url = "/homeServlet";
-		}else {
-			req.setAttribute("result", "loginError");
-			url = "/login.jsp";
-		}
-		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
+		List<Cliente> listaDeClientes = clienteDao.listarClientes();
+
+		req.setAttribute("clientes", listaDeClientes);
+		req.getRequestDispatcher("listarClientes.jsp").forward(req, resp);
+
+		ClienteDao odd = new ClienteDao(DataSourceSearcher.getInstance().getDataSource());
+
+		System.out.println("Ordens de Serviço: " + listaDeClientes.size());
+
+		req.setAttribute("listaDeClientes", listaDeClientes);
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/listarClientes.jsp");
 		dispatcher.forward(req, resp);
+
 	}
 
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
 }
