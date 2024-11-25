@@ -16,29 +16,29 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/listarClientes")
 public class ListarClientesServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ClienteDao clienteDao = new ClienteDao(DataSourceSearcher.getInstance().getDataSource());
-		List<Cliente> listaDeClientes = clienteDao.listarClientes();
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ClienteDao clienteDao = new ClienteDao(DataSourceSearcher.getInstance().getDataSource());
+        List<Cliente> listaDeClientes = clienteDao.listarClientes();
 
-		req.setAttribute("clientes", listaDeClientes);
-		req.getRequestDispatcher("listarClientes.jsp").forward(req, resp);
+        req.setAttribute("clientes", listaDeClientes);
+        req.getRequestDispatcher("listarClientes.jsp").forward(req, resp);
 
-		ClienteDao odd = new ClienteDao(DataSourceSearcher.getInstance().getDataSource());
+        ClienteDao odd = new ClienteDao(DataSourceSearcher.getInstance().getDataSource());
 
-		System.out.println("Ordens de Serviço: " + listaDeClientes.size());
+        System.out.println("Ordens de Serviço: " + listaDeClientes.size()); // Depuração
 
-		req.setAttribute("listaDeClientes", listaDeClientes);
+        req.setAttribute("listaDeClientes", listaDeClientes);
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/listarClientes.jsp");
-		dispatcher.forward(req, resp);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/listarClientes.jsp");
+        dispatcher.forward(req, resp);
 
-	}
+    }
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
-	}
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 }

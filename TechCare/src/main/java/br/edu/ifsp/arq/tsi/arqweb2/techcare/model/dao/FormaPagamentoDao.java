@@ -58,7 +58,7 @@ public class FormaPagamentoDao {
 		}
 	}
 
-	public List<FormaPagamento> ListarFormasPagamento() {
+	public List<FormaPagamento> listarFormasPagamento() {
 		List<FormaPagamento> formasPagamento = new ArrayList<>();
 		String sql = "select * from forma_pagamento";
 
