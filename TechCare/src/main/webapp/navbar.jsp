@@ -42,13 +42,15 @@
 							Clientes
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="clientesDropdown">
-							<li><a class="dropdown-item" href="cadastrarCliente.jsp">Cadastrar Cliente</a></li>
-							<li><a class="dropdown-item" href="listarClientes.jsp">Listar Cliente</a></li>
+							<li><a class="dropdown-item" href="cadastrar-cliente.jsp">Cadastrar Cliente</a></li>
+							<li><a class="dropdown-item" href="listar-clientes.jsp">Listar Cliente</a></li>
 						</ul>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/cadastrarCliente")
+@WebServlet("/cadastrar-cliente")
 public class CadastrarClienteServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -49,12 +49,11 @@ public class CadastrarClienteServlet extends HttpServlet {
 		ClienteDao clienteDao = new ClienteDao(DataSourceSearcher.getInstance().getDataSource());
 		clienteDao.salvar(nome, email, telefone, cpf, endereco);
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/listarClientes.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/listar-clientes.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 	public void cookies(HttpServletResponse resp, String... dados) {
-
 		if (dados.length % 2 != 0) {
 			throw new IllegalArgumentException("Os dados devem ser passados em pares nome-valor.");
 		}

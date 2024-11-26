@@ -18,45 +18,45 @@ public class ClienteDao {
 	}
 
 	public void salvar(String nome, String email, String telefone, String cpf, Endereco endereco) {
-		String sqlCliente = "insert into cliente (nome, email, telefone, cpf) values (?, ?, ?, ?)";
-		String sqlEndereco = "insert into endereco (logradouro, numero, complemento, bairro, cep, cidade, estado, cliente_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	    String sqlCliente = "insert into cliente (nome, email, telefone, cpf, ativo) values (?, ?, ?, ?, ?)";
+	    String sqlEndereco = "insert into endereco (logradouro, numero, complemento, bairro, cep, cidade, estado, codigo_cliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-		try (Connection conn = dataSource.getConnection()) {
-			try (PreparedStatement psCliente = conn.prepareStatement(sqlCliente,
-					PreparedStatement.RETURN_GENERATED_KEYS)) {
-				psCliente.setString(1, nome);
-				psCliente.setString(2, email);
-				psCliente.setString(3, telefone);
-				psCliente.setString(4, cpf);
-				psCliente.executeUpdate();
+	    try (Connection conn = dataSource.getConnection()) {
+	        try (PreparedStatement psCliente = conn.prepareStatement(sqlCliente, PreparedStatement.RETURN_GENERATED_KEYS)) {
+	            psCliente.setString(1, nome);
+	            psCliente.setString(2, email);
+	            psCliente.setString(3, telefone);
+	            psCliente.setString(4, cpf);
+	            psCliente.setBoolean(5, true);
+	            psCliente.executeUpdate();
 
-				ResultSet rs = psCliente.getGeneratedKeys();
-				if (rs.next()) {
-					long clienteId = rs.getLong(1);
+	            ResultSet rs = psCliente.getGeneratedKeys();
+	            if (rs.next()) {
+	                long clienteId = rs.getLong(1);
 
-					try (PreparedStatement psEndereco = conn.prepareStatement(sqlEndereco)) {
-						psEndereco.setString(1, endereco.getLogradouro());
-						psEndereco.setString(2, endereco.getNumero());
-						psEndereco.setString(3, endereco.getComplemento());
-						psEndereco.setString(4, endereco.getBairro());
-						psEndereco.setString(5, endereco.getCep());
-						psEndereco.setString(6, endereco.getCidade());
-						psEndereco.setString(7, endereco.getEstado());
-						psEndereco.setLong(8, clienteId);
-						psEndereco.executeUpdate();
-					}
-				} else {
-					throw new RuntimeException("Erro ao obter o ID do cliente");
-				}
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException("Erro não foi possível salvar cliente", e);
-		}
+	                try (PreparedStatement psEndereco = conn.prepareStatement(sqlEndereco)) {
+	                    psEndereco.setString(1, endereco.getLogradouro());
+	                    psEndereco.setString(2, endereco.getNumero());
+	                    psEndereco.setString(3, endereco.getComplemento());
+	                    psEndereco.setString(4, endereco.getBairro());
+	                    psEndereco.setString(5, endereco.getCep());
+	                    psEndereco.setString(6, endereco.getCidade());
+	                    psEndereco.setString(7, endereco.getEstado());
+	                    psEndereco.setLong(8, clienteId);
+	                    psEndereco.executeUpdate();
+	                }
+	            } else {
+	                throw new RuntimeException("Erro ao obter o ID do cliente");
+	            }
+	        }
+	    } catch (SQLException e) {
+	        throw new RuntimeException("Erro não foi possível salvar cliente", e);
+	    }
 	}
 
 	public void deletar(int id) {
 		String sqlCliente = "delete from cliente where id = ?";
-		String sqlEndereco = "delete from endereco where cliente_id = ?";
+		String sqlEndereco = "delete from endereco where codigo_cliente = ?";
 
 		try (Connection conn = dataSource.getConnection()) {
 			try (PreparedStatement psEndereco = conn.prepareStatement(sqlEndereco)) {
@@ -76,7 +76,7 @@ public class ClienteDao {
 
 	public void atualizar(int id, String nome, String email, String telefone, String cpf, Endereco endereco) {
 		String sqlCliente = "update cliente set nome = ?, email = ?, telefone = ?, cpf = ? where id = ?";
-		String sqlEndereco = "update endereco set logradouro = ?, numero = ?, complemento = ?, bairro = ?, cep = ?, cidade = ?, estado = ? where cliente_id = ?";
+		String sqlEndereco = "update endereco set logradouro = ?, numero = ?, complemento = ?, bairro = ?, cep = ?, cidade = ?, estado = ? where codigo_cliente = ?";
 
 		try (Connection conn = dataSource.getConnection()) {
 			try (PreparedStatement psCliente = conn.prepareStatement(sqlCliente)) {
@@ -109,7 +109,7 @@ public class ClienteDao {
 		List<Cliente> clientes = new ArrayList<>();
 		String sql = "select c.id, c.nome, c.email, c.telefone, c.cpf, c.ativo, "
 				+ "e.logradouro, e.numero, e.complemento, e.bairro, e.cep, e.cidade, e.estado " + "from cliente c "
-				+ "join endereco e on c.id = e.cliente_id";
+				+ "join endereco e on c.id = e.codigo_cliente";
 
 		try (Connection conn = dataSource.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql);
@@ -149,7 +149,7 @@ public class ClienteDao {
 		Cliente cliente = null;
 		String sql = "select c.id, c.nome, c.email, c.telefone, c.cpf, c.ativo, "
 				+ "e.logradouro, e.numero, e.complemento, e.bairro, e.cep, e.cidade, e.estado "
-				+ "from cliente c join endereco e on c.id = e.cliente_id where c.id = ?";
+				+ "from cliente c join endereco e on c.id = e.codigo_cliente where c.id = ?";
 
 		try (Connection conn = dataSource.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 			ps.setInt(1, id);

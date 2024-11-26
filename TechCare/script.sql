@@ -6,22 +6,24 @@ DROP TABLE client;
 
 /* SELECT * FROM techcare.client; */
 
-CREATE TABLE client (
+CREATE TABLE cliente (
     codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    password VARCHAR(150) NOT NULL,
     telefone VARCHAR(11),
     cpf VARCHAR(11) NOT NULL,
-    ativo BOOLEAN NOT NULL,
+    ativo BOOLEAN NOT NULL;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE endereco {
     logradouro VARCHAR(100) NOT NULL,
     numero VARCHAR(10) NOT NULL,
     complemento VARCHAR(50),
     bairro VARCHAR(50) NOT NULL,
+    cep VARCHAR(10) NOT NULL,
     cidade VARCHAR(50) NOT NULL,
-    estado VARCHAR(20) NOT NULL,
-    cep VARCHAR(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    estado VARCHAR(20) NOT NULL;
+} ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE activity (
 	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
